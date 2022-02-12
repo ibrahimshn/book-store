@@ -32,11 +32,11 @@ public class BookMapper {
         bookDTO.setPrice(book.getPrice());
         bookDTO.setId(book.getId());
 
-        final Stock inventory = book.getStock();
+        final Stock stock = book.getStock();
 
         // stock
         final BookDTO.StockDTO stockDTO = new BookDTO.StockDTO();
-        stockDTO.setQuantity(inventory.getQuantity());
+        stockDTO.setQuantity(stock.getQuantity());
 
         bookDTO.setStock(stockDTO);
 
