@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     @Override
-    public Order saveOrder(Order order, List<OrderDTO.OrderItemDTO> orderItems) {
+    public Order createOrder(Order order, List<OrderDTO.OrderItemDTO> orderItems) {
         for (OrderDTO.OrderItemDTO orderItemDTO : orderItems) {
             final Book book = bookService.findBookById(orderItemDTO.getBookId());
             final Stock stock = stockService.findStockByBookId(orderItemDTO.getBookId());

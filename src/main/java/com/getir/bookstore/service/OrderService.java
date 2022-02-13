@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    Order saveOrder(Order order, @NotNull List<OrderDTO.OrderItemDTO> orderItems);
+    Order createOrder(Order order, @NotNull List<OrderDTO.OrderItemDTO> orderItems);
 
     List<Order> findOrdersByCustomerId(Integer customerId, AppPage appPage);
 
