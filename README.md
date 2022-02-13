@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   
-<h2 align="center">Reading Is Good</h2>
+<h1 align="center">Reading Is Good</h1>
 
   <p align="center">
     This application aims to take customers book orders and bring 
