@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("v1/orders")
 public class OrderController {
 
     private final OrderService orderService;
@@ -25,19 +26,19 @@ public class OrderController {
         this.orderMapper = orderMapper;
     }
 
-    @PostMapping("order")
+    @PostMapping("/order")
     public ResponseEntity<OrderDTO> createOrder(@RequestBody @Valid OrderDTO orderDto) {
         final Order order = orderService.createOrder(orderMapper.fromOrderDtoToOrderEntity(orderDto), orderDto.getOrderItems());
         return new ResponseEntity(orderMapper.fromOrderEntityToOrderDTO(order), HttpStatus.CREATED);
     }
 
-    @GetMapping("order/{orderId}")
+    @GetMapping("/order/{orderId}")
     public ResponseEntity<Order> getOrderById(@PathVariable Integer orderId) {
         Order order = orderService.findOrderById(orderId);
         return new ResponseEntity(orderMapper.fromOrderEntityToOrderDTO(order), HttpStatus.OK);
     }
 
-    @GetMapping("orders")
+    @GetMapping
     public ResponseEntity<List<Order>> getOrderListByDateInterval(
             @RequestParam("fromDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromDate,
             @RequestParam("toDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date toDate) {

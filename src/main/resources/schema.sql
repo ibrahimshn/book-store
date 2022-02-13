@@ -24,6 +24,7 @@ create table IF NOT EXISTS stock
     id       int auto_increment primary key,
     book_id  int,
     quantity int,
+    version  int,
     CONSTRAINT FK_STOCK_BOOK_ID
         FOREIGN KEY (book_id)
             REFERENCES books (id)

@@ -5,6 +5,7 @@ import com.getir.bookstore.exception.stock.StockDoesNotExistException;
 import com.getir.bookstore.repository.StockRepository;
 import com.getir.bookstore.service.StockService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ValidationException;
@@ -19,7 +20,7 @@ public class StockServiceImpl implements StockService {
     }
 
 
-    @Transactional
+    @Transactional(propagation = Propagation.MANDATORY)
     @Override
     public void decreaseAmount(Stock stock, int amount) {
         //check quantity

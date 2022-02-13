@@ -1,6 +1,8 @@
 package com.getir.bookstore.exception.order;
 
-public class OrderException extends RuntimeException {
+import com.getir.bookstore.common.AppException;
+
+public class OrderException extends AppException {
     public OrderException(String message) {
         super(message);
     }

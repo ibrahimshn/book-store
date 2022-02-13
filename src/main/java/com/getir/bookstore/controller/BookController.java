@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("book")
+@RequestMapping("v1/books")
 public class BookController {
 
     private final BookService bookService;
@@ -20,13 +20,13 @@ public class BookController {
         this.bookMapper = bookMapper;
     }
 
-    @PostMapping
+    @PostMapping("/book")
     public BookDTO saveBook(@RequestBody @Valid BookDTO bookDTO) {
         final Book book = bookService.saveBook(bookMapper.fromBookDtoToBookEntity(bookDTO));
         return bookMapper.fromBookEntityToBookDTO(book);
     }
 
-    @PutMapping
+    @PutMapping("/book")
     public BookDTO updateBookInventory(@RequestBody @Valid BookDTO bookDTO) {
         final Book book = bookService.updateBook(bookMapper.fromBookDtoToBookEntity(bookDTO));
         return bookMapper.fromBookEntityToBookDTO(book);

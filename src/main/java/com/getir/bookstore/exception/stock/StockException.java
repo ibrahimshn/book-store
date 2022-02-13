@@ -1,6 +1,8 @@
 package com.getir.bookstore.exception.stock;
 
-public class StockException extends RuntimeException {
+import com.getir.bookstore.common.AppException;
+
+public class StockException extends AppException {
     public StockException(String message) {
         super(message);
     }

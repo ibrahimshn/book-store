@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("customer")
+@RequestMapping("v1/customers")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -29,12 +29,12 @@ public class CustomerController {
         this.orderMapper = orderMapper;
     }
 
-    @PostMapping("register")
+    @PostMapping("/customer/register")
     public ResponseEntity<Customer> registerCustomer(@RequestBody @Valid Customer customer) {
         return new ResponseEntity(customerService.saveCustomer(customer), HttpStatus.CREATED);
     }
 
-    @GetMapping("{customerId}/orders")
+    @GetMapping("/customer/{customerId}/orders")
     public ResponseEntity<List<Order>> getOrdersByCustomer(@PathVariable Integer customerId, AppPage appPage) {
         List<Order> orders = orderService.findOrdersByCustomerId(customerId, appPage);
         final List<OrderDTO> orderDTOList =

@@ -6,12 +6,14 @@ import com.getir.bookstore.exception.book.BookAlreadyExistException;
 import com.getir.bookstore.exception.book.BookDoesNotExistException;
 import com.getir.bookstore.repository.BookRepository;
 import com.getir.bookstore.service.BookService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.function.Supplier;
 
 @Service
+@Slf4j
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
@@ -27,6 +29,7 @@ public class BookServiceImpl implements BookService {
         if (isBookExist) {
             throw new BookAlreadyExistException(book.getAuthor() + "'s  " + book.getName() + " book has already saved.");
         }
+        log.info("Saved book");
         return bookRepository.save(book);
     }
 

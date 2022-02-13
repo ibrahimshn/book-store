@@ -20,5 +20,8 @@ public class Stock {
     @MapsId
     private Book book;
 
+    @Version
+    private int version;
+
     private int quantity;
 }
