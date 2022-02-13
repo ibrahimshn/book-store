@@ -50,7 +50,6 @@ create table IF NOT EXISTS orders
             REFERENCES customers (id)
 );
 
-
 create table IF NOT EXISTS order_item
 (
     id       int auto_increment primary key,
